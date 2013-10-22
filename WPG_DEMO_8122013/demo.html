@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>WPG DEMO</title>
+<link href="css/wpg.css" rel="stylesheet" type="text/css" />
+<link href="css/impress-demo.css" rel="stylesheet" />
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/wpg.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/impress.js"></script>
+</head>
+<body onload="init()" class="impress-not-supported">
+	<div class="container">
+		<div class="row-fluid">
+			<div class="left span4">
+				<div class="top-checkbox">
+					<input type="checkbox" id="all" name="all" value="all" class="check-box ">Show All
+					<div id="info">
+						<div id="soldier-info">
+							<h1>Info-Soldier Here!</h1>
+						</div>
+						<div id="farm-info">
+							<h1>Info-Farm Here!</h1>
+						</div>
+						<div id="nuclear-power-info">
+							<h1>Info-Nuclear-Power Here!</h1>
+						</div>
+					</div>
+				</div>
+					<div class="">
+						<h1>Crises</h1>						
+						<form>
+							<input type="checkbox" id="all-crises" name="all-crises" value="all-crises" class="check-box">All Crises
+							<input type="checkbox" id="crises-1" name="crises-1" value="crises-1" class="check-box">1
+							<input type="checkbox" id="crises-2" name="crises-2" value="crises-2" class="check-box">2
+							<input type="checkbox" id="crises-3" name="crises-3" value="crises-3" class="check-box">3
+						</form>
+					</div>
+					<div class="">
+						<h1>Transportation</h1>
+						<form>
+							<input type="checkbox" id="all-transportation" name="all-transportation" value="all-transportation" class="check-box">All Transportation
+							<input type="checkbox" id="soldier" name="soldier" value="soldier" class="check-box">Soldier
+							<input type="checkbox" id="aircraft" name="aircraft" value="aircraft" class="check-box">Aircraft<br>
+							<input type="checkbox" id="stealth-bomber" name="stealth-bomber" value="stealth-bomber" class="check-box">Stealth Bomber
+							<input type="checkbox" id="helicopter" name="helicopter" value="helicopter" class="check-box">Helicopter
+							<input type="checkbox" id="ship" name="ship" value="ship" class="check-box">Ship
+							<input type="checkbox" id="transport-ship" name="transport-ship" value="transport-ship" class="check-box">Transport Ship
+							<input type="checkbox" id="oil-tanker" name="oil-tanker" value="oil-tanker" class="check-box">Oil Tanker
+							<input type="checkbox" id="submarine" name="submarine" value="submarine" class="check-box">Submarine
+							<input type="checkbox" id="truck" name="truck" value="truck" class="check-box">Truck
+							<input type="checkbox" id="tank" name="tank" value="tank" class="check-box">Tank
+						</form>
+					</div>
+					<div class="">
+						<h1>Power and Energy</h1>
+						<form class=""> 
+							<input type="checkbox" id="all-power-energy" name="all-power-energy" value="all-power-energy" class="check-box">All Power and Energy
+							<input type="checkbox" id="hydroelectric-plant" name="hydroelectric-plant" value="hydroelectric-plant" class="check-box">Hydroelectric Plant<br>
+							<input type="checkbox" id="solar-power-plant" name="solar-power-plant" value="solar-power-plant" class="check-box">Solar Power Plant
+							<input type="checkbox" id="oil-rig" name="oil-rig" value="oil-rig" class="check-box">Oil Rig
+							<input type="checkbox" id="oil-production-facility" name="oil-production-facility" value="oil-production-facility" class="check-box">Oil Production Facility<br>
+							<input type="checkbox" id="nuclear-power-plant" name="nuclear-power-plant" value="nuclear-power-plant" class="check-box">Nuclear Power Plant
+							<input type="checkbox" id="wind-generator" name="wind-generator" value="wind-generator" class="check-box">Wind Generator
+						</form>
+					</div>
+					<div class="">
+						<h1>Plants and Manufacturing</h1>
+						<form>
+							<input type="checkbox" id="all-plants-manufacturing" name="all-plants-manufacturing" value="all-plants-manufacturing" class="check-box">All Plants and Manufacturing
+							<input type="checkbox" id="chemical-plant" name="chemical-plant" value="chemical-plant" class="check-box">Chemical Plant<br>
+							<input type="checkbox" id="silicon-plant" name="silicon-plant" value="silicon-plant" class="check-box">Silicon Plant
+							<input type="checkbox" id="nuclear-processing-plant" name="nuclear-processing-plant" value="nuclear-processing-plant" class="check-box">Nuclear Processing Plant<br>
+							<input type="checkbox" id="medical-research-facility" name="medical-research-facility" value="medical-research-facility" class="check-box">Medical Research Facility
+							<input type="checkbox" id="oil-refinery" name="oil-refinery" value="oil-refinery" class="check-box">Oil Refinery<br>
+							<input type="checkbox" id="food-processing-plant" name="food-processing-plant" value="food-processing-plant" class="check-box">Food Processing Plant<br>
+							<input type="checkbox" id="software-hardware-manufacturing" name="software-hardware-manufacturing" value="software-hardware-manufacturing" class="check-box">Software / Hardware Manufacturing<br>
+							<input type="checkbox" id="entertainment-complex" name="entertainment-complex" value="entertainment-complex" class="check-box">Entertainment Complex
+							<input type="checkbox" id="metro-city-university-area" name="metro-city-university-area" value="metro-city-university-area" class="check-box">Metro/City University Area<br>
+							<input type="checkbox" id="farm" name="farm" value="farm" class="check-box">Farm<br>
+						</form>	
+						<input type="button" id="zoom-in" onclick="zoomIn()" value="Zoom In">
+						<input type="button" id="zoom-out" onclick="zoomOut()" value="Zoom Out">
+						<input type="button" id="btn" onclick="displayResult()" value="Show Result" >	
+					</div>		
+			</div>
+			<div id="impress" class="middle map span8">
+					<canvas id="canvas" width="700" height="700">
+	    			This text is displayed if your browser does not support HTML5 Canvas.
+	    		</canvas>
+			</div>
+		</div>
+	</div>
+</body>

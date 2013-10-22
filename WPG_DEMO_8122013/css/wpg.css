@@ -1,0 +1,69 @@
+/*style sheet of WPG*/
+
+body {
+
+}
+
+
+.left input[type="checkbox"] {
+	margin:0 5px 5px 0;
+}
+
+.top-checkbox {
+	margin-top: 20px;
+}
+
+.inner-container {
+	width: 1200px;
+	margin: 0 auto;
+	padding-top: 15px;
+}
+
+.left h1 {
+	font-size: 20px;
+}
+
+canvas, img { 
+	display:block; 
+	margin:1em auto; 
+	border:1px solid black; 
+}
+canvas { 
+	background:url(../img/WP_map_700_bridges.png); 
+}
+
+.text {
+	text-align: center;
+}
+
+.left .row-fluid{
+	width:450px;
+}
+
+#info {
+	display: block;
+	position:relative;
+	float: right;
+}
+
+#info h1 {
+	border:2px solid green;
+
+}
+
+#soldier-info, #farm-info, #nuclear-power-info {
+	display: none;
+}
+
+.middle {
+	padding-right: 10px;
+	float: right;
+}
+
+.right .map {
+
+}
+
+.check-box {
+
+}

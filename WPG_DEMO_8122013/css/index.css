@@ -1,0 +1,86 @@
+/*style sheet of WPG*/
+
+body {
+	/*background-image:url(../img/Space-01.jpg);
+	background-repeat: no-repeat;
+	background-position:center;
+	background-color: #99FFFF; */
+	background-image: none;
+}
+
+.wpg {
+
+}
+
+.left input[type="checkbox"] {
+	margin:0 5px 5px 0;
+}
+
+.top-checkbox {
+	margin-top: 20px;
+}
+
+.inner-container {
+	width: 1200px;
+	margin: 0 auto;
+	padding-top: 15px;
+}
+
+.left h1 {
+	font-size: 20px;
+}
+
+canvas, img { 
+	display:block; 
+	margin:1em auto; 
+	border:1px solid black; 
+}
+canvas { 
+	/*background:url(./img/WP_Map_mockup.png); */
+}
+
+.text {
+	text-align: center;
+}
+
+.left .row-fluid{
+	width:450px;
+}
+
+#info {
+	display: block;
+	position:relative;
+}
+
+#info h1 {
+	border:2px solid green;
+
+}
+
+#soldier-info, #farm-info, #nuclear-power-info {
+	display: none;
+}
+
+.middle {
+	padding-right: 10px;
+	float: right;
+}
+
+
+#big {
+	background-color: #99FFCC;
+}
+
+#big p b{
+	font-size: 50px;
+	line-height: 100px;
+}
+
+#big p {
+	font-size: 30px;
+	line-height: 100px;
+}
+
+#source {
+	background-image: none;
+}

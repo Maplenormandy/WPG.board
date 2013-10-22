@@ -1,0 +1,20 @@
+<script type="text/javascript">
+    // return the value to the parent window
+    function returnYourChoice(choice){
+        opener.setSearchResult(targetField, choice);
+        window.close();
+    }
+</script>
+<form name="thisForm">
+    <!-- <table> -->
+        <tr>
+            <td><input type="button" style="color:blue" onclick="returnYourChoice('soldier')" value="add a soldier"></td>
+        </tr>
+        <tr>
+            <td><input type="button" style="color:blue" onclick="returnYourChoice('farm')" value="add a farm"></td>
+        </tr>
+        <tr>
+            <td><input type="button" style="color:blue" onclick="returnYourChoice('aircraft')" value="add a aircraft"></td>
+        </tr>
+    <!-- </table> -->
+</form>
