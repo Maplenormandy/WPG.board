@@ -1,0 +1,37 @@
+<head>
+  <title>wpg-meteor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="span3">
+        {{> sidebar}}
+      </div>
+
+      <div class="span9">
+        {{> board}}
+      </div>
+    </div>
+  </div>
+</body>
+
+<template name="sidebar">
+  <button id="createPiece" class="ui-button-primary">Create new piece</button>
+  <div class="randomize">Randomize Pieces</div>
+</template>
+
+<template name="board">
+  <div id="board">
+    <h1>{{greeting}}</h1>
+    {{#each pieces}}
+      {{> piece}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="piece">
+  <img src="/WP_icon_base_dkgreen.png" class="piece" style="position:absolute; left:{{x}}px; top:{{y}}px"/>
+  <p>x: {{x}}, y: {{y}}</p>
+</template>
