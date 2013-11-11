@@ -1,18 +1,17 @@
 <head>
   <title>wpg-meteor</title>
+  <script src="OpenLayers.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
   <div class="container">
-    <div class="row">
-      <div class="span3">
-        {{> sidebar}}
-      </div>
+    <div class="side-pane">
+      {{> sidebar}}
+    </div>
 
-      <div class="span9">
-        {{> board}}
-      </div>
+    <div class="main-pane">
+      {{> board}}
     </div>
   </div>
 </body>
@@ -20,21 +19,22 @@
 <template name="sidebar">
   <button id="createPiece" class="btn btn-primary">Create new piece</button>
   <button id="randomize" class="btn btn-default">Randomize</button>
-  <p>Zoom</p>
-  {{#constant}}
-  <div id="slider-vertical" style="height: 200px;"></div>
-  {{/constant}}
 </template>
 
 <template name="board">
-  <div id="board" style="position:relative; overflow:hidden">
-    <img src="/WP_Map_mockup.png" style="position:relative; left:0px; right:0px; transform: scale({{mapScaling}})" />
-    {{#each pieces}}
-      {{> piece}}
-    {{/each}}
+  <img src="/WP_Map_mockup.png"
+      id="board" style="position:absolute; top:0px; left:0px;
+      -webkit-transform: matrix({{mapMatrix}});
+      -webkit-transform-origin: {{mapX}}px {{mapY}}px;" />
+
+  <div class="btn-group-vertical zoom">
+    <div id="zoomIn" class="btn btn-default">+</div>
+    <div id="zoomOut" class="btn btn-default">-</div>
   </div>
 </template>
 
 <template name="piece">
-  <img src="/WP_icon_base_dkgreen.png" class="piece" style="position:absolute; left:{{x}}px; top:{{y}}px"/>
+  <img src="/WP_icon_base_dkgreen.png" class="piece"
+      style="position:absolute; left:0px; top:0px;
+      -webkit-transform: matrix({{pieceMatrix}});"/>
 </template>
