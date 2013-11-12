@@ -4,104 +4,75 @@ var piecesHandle = Meteor.subscribe('pieces', function() {
   //
 });
 
-Meteor.startup(function() {
-  $(window).on('resize', function(e) {
-    Session.set('viewWidth', $('.main-pane').width());
-    Session.set('viewHeight', $('.main-pane').height());
-  });
-  Session.set('viewWidth', $('.main-pane').width());
-  Session.set('viewHeight', $('.main-pane').height());
-  
-  $(document).on('keydown', function(e) {
-    switch (e.which) {
-      case 37:
-        Session.set('mapX', Session.get('mapX')-10);
-        break;
-      case 39:
-        Session.set('mapX', Session.get('mapX')+10);
-        break;
-      case 38:
-        Session.set('mapY', Session.get('mapY')-10);
-        break;
-      case 40:
-        Session.set('mapY', Session.get('mapY')+10);
-        break;
-      case 107:
-        Session.set('zoom', Session.get('zoom')+5);
-        break;
-      case 109:
-        Session.set('zoom', Session.get('zoom')-5);
-        break;
+var map;
+var boardLayer;
+var unitLayer;
+var polyLayer;
+var polyControl;
 
+var markers = {};
+
+Meteor.startup(function() {
+  boardLayer = new OpenLayers.Layer.Image("board", "/WP_Map_mockup.png",
+    new OpenLayers.Bounds(0,0, 2592,2592),
+    new OpenLayers.Size(2592,2592),
+    {layers: 'basic'}
+  );
+
+  polyLayer = new OpenLayers.Layer.Vector("polyLayer");
+
+  polyControl = new OpenLayers.Control.DrawFeature(polyLayer,
+      OpenLayers.Handler.Polygon);
+
+  unitLayer = new OpenLayers.Layer.Markers("units");
+
+  map = new OpenLayers.Map({
+    div: 'board',
+    layers: [boardLayer, unitLayer, polyLayer],
+    maxExtent: new OpenLayers.Bounds(0,0, 2592,2592),
+    maxResolution: 2592/256,
+    restrictExtent: new OpenLayers.Bounds(0,0, 2592,2592),
+  });
+
+  map.addControl(new OpenLayers.Control.MousePosition());
+  map.addControl(polyControl);
+  
+  polyControl.activate();
+
+  var size = new OpenLayers.Size(64,64);
+  var offset = new OpenLayers.Pixel(-(size.w/2), -(size.h/2));
+  var icon = new OpenLayers.Icon('/WPGsoldier.png', size, offset);
+
+  Pieces.find().observe({
+    added: function(newDocument) {
+      markers[newDocument._id] = new OpenLayers.Marker(
+        new OpenLayers.LonLat(newDocument.x,newDocument.y),icon.clone());
+      unitLayer.addMarker(markers[newDocument._id]);
+    },
+    changed: function(newDocument, oldDocument) {
+      var newLonLat = new OpenLayers.LonLat(newDocument.x, newDocument.y);
+      var newPx = map.getLayerPxFromLonLat(newLonLat);
+      markers[oldDocument._id].moveTo(newPx);
+    },
+    removed: function(oldDocument) {
     }
   });
 });
+
 
 Template.board.pieces = function() {
   return Pieces.find();
 };
 
-Session.setDefault('zoom', 0);
-Session.setDefault('mapHeight', 2592);
-Session.setDefault('mapWidth', 2592);
-Session.setDefault('mapX', 2592/2);
-Session.setDefault('mapY', 2592/2);
-
-Deps.autorun(function() {
-  var scale = Math.exp(Session.get('zoom')/50);
-  var mapLeft = Session.get('viewWidth')/2-Session.get('mapX');
-  var mapTop = Session.get('viewHeight')/2-Session.get('mapY');
-
-  Session.set('mapMatrix', [scale, 0, 0, scale, mapLeft, mapTop]);
-});
-
-Template.board.mapMatrix = function() {
-  return Session.get('mapMatrix').join(',');
-}
-Template.board.mapX = function() {
-  return Session.get('mapX');
-}
-Template.board.mapY = function() {
-  return Session.get('mapY');
-}
-
-Session.setDefault('viewWidth', 1000);
-Session.setDefault('viewHeight', 600);
-
-
 Template.sidebar.events({
   'click #createPiece': function() {
-    Pieces.insert({x: (Math.random()*500), y: (Math.random()*500)});
+    Pieces.insert({x: (Math.random()*2592), y: (Math.random()*2592)});
   },
   'click #randomize': function() {
     Pieces.find().forEach(function (piece) {
-      Pieces.update({_id: piece._id},{x:(Math.random()*500),y:(Math.random()*500)});
+      Pieces.update({_id: piece._id},
+        {x:(Math.random()*2592),y:(Math.random()*2592)});
     });
   }
 });
 
-Session.setDefault('dragging', false);
-
-Template.board.events({
-  'click #zoomIn': function() {
-    Session.set('zoom', Session.get('zoom')+5);
-  },
-  'click #zoomOut': function() {
-    Session.set('zoom', Session.get('zoom')-5);
-  },
-});
-
-Template.board.rendered = function() {
-};
-
-Template.piece.pieceMatrix = function() {
-  
-}
-
-Template.piece.pieceLeft = function() {
-  return this.x;
-};
-
-Template.piece.pieceTop = function() {
-  return this.y
-};

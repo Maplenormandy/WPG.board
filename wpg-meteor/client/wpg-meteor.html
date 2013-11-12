@@ -22,19 +22,7 @@
 </template>
 
 <template name="board">
-  <img src="/WP_Map_mockup.png"
-      id="board" style="position:absolute; top:0px; left:0px;
-      -webkit-transform: matrix({{mapMatrix}});
-      -webkit-transform-origin: {{mapX}}px {{mapY}}px;" />
-
-  <div class="btn-group-vertical zoom">
-    <div id="zoomIn" class="btn btn-default">+</div>
-    <div id="zoomOut" class="btn btn-default">-</div>
-  </div>
-</template>
-
-<template name="piece">
-  <img src="/WP_icon_base_dkgreen.png" class="piece"
-      style="position:absolute; left:0px; top:0px;
-      -webkit-transform: matrix({{pieceMatrix}});"/>
+  {{#constant}}
+  <div id="board" style="width:100%; height:100%"></div>
+  {{/constant}}
 </template>
