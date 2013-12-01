@@ -17,8 +17,38 @@
 </body>
 
 <template name="sidebar">
+  
+  <div class="btn-group-vertical">
+    <button class="btn btn-primary" disabled="disabled">Nation A</button> 
+    <button class="btn btn-success" disabled="disabled">Nation B</button>
+    <button class="btn btn-danger">Nation C</button>
+    <button class="btn btn-default" disabled="disabled">Nation D</button>
+  </div>
+  <hr />
+
+  <h3>Level</h3>
+  <div class="btn-group-vertical">
+    <button class="btn btn-default wpg-level" name="under">Undersea</button> 
+    <button class="btn btn-default wpg-level" name="land">Land</button>
+    <button class="btn btn-default wpg-level" name="air">Air</button>
+    <button class="btn btn-default wpg-level" name="space">Space</button>
+  </div>
+  <hr />
+
+  <h3>Tools</h3>
+  <div class="btn-group-vertical">
+    <button class="btn btn-default wpg-draw" name="polyfill">Fill Shape</button>
+    <button class="btn btn-default wpg-draw" name="line">Draw Line</button>
+  </div>
+
+  <button type="button" class="btn btn-primary wpg-draw" name="select">Move Units</button>
+
+  <hr />
+  
+  <h3>Dev Tools</h3> 
   <button id="createPiece" class="btn btn-primary">Create new piece</button>
-  <button id="randomize" class="btn btn-default">Randomize</button>
+  <button id="removePieces" class="btn btn-primary">Remove all pieces</button>
+  <input type="text" name="opacity" value="{{mapOpacity}}" />
 </template>
 
 <template name="board">
